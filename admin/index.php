@@ -5,22 +5,15 @@
 		include ('sidebar.php');
 		 
 		 if (isset($_POST['submit']))
-	  {
+	  {		
 		  $name = isset($_POST['name'])?$_POST['name']:'';
 		  $price = isset($_POST['price'])?$_POST['price']:'';
 		  $image = isset($_POST['image'])?$_POST['image']:'';
 		  $category = isset($_POST['category'])?$_POST['category']:'';
 		  $desc = isset($_POST['desc'])?$_POST['desc']:'';
 
-			$sql = "INSERT INTO `products` (`name`, `price`, `long_desc`) VALUES  ('".$name."', '".$price."', '".$desc."')";
-			$sql = "INSERT INTO `categories` (`name`) VALUES('".$category."')";
+			$sql = "INSERT INTO products(`name`,`price`,`long_desc`) VALUES('".$name."','".$price."','".$desc."')";
 
-			if ($conn->query($sql) === true) {
-				echo "Product added successfully";
-			} else {
-				$errors[] = array('input'=>'form','msg'=>$conn->errors);
-			}
-		
 			$conn->close();
 			}
 		 ?>
@@ -307,7 +300,7 @@
 								</p>
 								
 								<p>
-									<input class="button" type="submit" value="Submit" />
+									<input class="button" type="submit" value="Submit" name="submit"/>
 								</p>
 								
 							</fieldset>
